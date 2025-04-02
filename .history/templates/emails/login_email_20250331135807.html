@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion à MISTRAL VOYAGES</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #0c3b87; /* Bleu Mistral */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .logo {
+            max-width: 250px;
+            margin-bottom: 15px;
+        }
+        .content {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-left: 1px solid #e9ecef;
+            border-right: 1px solid #e9ecef;
+        }
+        .code-container {
+            background-color: #ffffff;
+            border: 2px dashed #22b14c; /* Vert Mistral */
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0c3b87; /* Bleu Mistral */
+            letter-spacing: 5px;
+        }
+        .footer {
+            background-color: #e9ecef;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #6c757d;
+            border-radius: 0 0 5px 5px;
+        }
+        .security-notice {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #22b14c; /* Vert Mistral */
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        h1, h2 {
+            color: white; 
+        }
+        .content h2 {
+            border-bottom: 2px solid #22b14c; /* Vert Mistral */
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- Logo de Mistral VOYAGES -->
+            <img src="{% static 'logo_mistral.png' %}" alt="Mistral VOYAGES" class="logo">
+            <h1>Connexion à votre compte</h1>
+        </div>
+        <div class="content">
+            <h2>Bonjour {{ username }},</h2>
+            <p>Nous avons reçu une demande de connexion à votre compte. Pour finaliser votre connexion, veuillez utiliser le code ci-dessous:</p>
+           
+            <div class="code-container">
+                <div class="code">{{ code }}</div>
+            </div>
+           
+            <p>Ce code est valable pendant 10 minutes.</p>
+           
+            <div class="security-notice">
+                <strong>Note de sécurité:</strong> Si vous n'avez pas initié cette connexion, veuillez sécuriser votre compte immédiatement en changeant votre mot de passe et en contactant notre service client.
+            </div>
+            
+            <center><a href="{{ company_website }}" class="btn">Accéder à votre espace voyageur</a></center>
+        </div>
+        <div class="footer">
+            <p>© 2025 {{ company_name }} - Tous droits réservés</p>
+            <p>{{ company_address }}</p>
+            <p>Si vous avez des questions, contactez-nous à <a href="mailto:{{ company_email }}" style="color: #22b14c;">{{ company_email }}</a></p>
+        </div>
+    </div>
+</body>
+</html>

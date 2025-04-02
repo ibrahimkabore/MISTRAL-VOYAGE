@@ -1,0 +1,64 @@
+    """
+    Initiate a login process by sending a verification code to the user's email.
+
+    The API will return a 200 status code if the login initiation is successful.
+    The API will return a 400 status code if the username or password is invalid.
+    The API will return a 404 status code if the user is not found.
+    The API will return a 500 status code if there is an internal server error.
+
+    The response will contain a JSON object with the following keys:
+
+        * message: A success message if the login initiation is successful.
+        * error: An error message if the login initiation fails.
+
+    :param request: The request data containing the username and password.
+    :return: A JSON response with a success or error message.
+    """
+# Initiate a login process by sending a verification code to the user's email.
+# The API will return a 200 status code if the login initiation is successful.
+# The API will return a 400 status code if the username or password is invalid.
+# The API will return a 404 status code if the user is not found.
+# The API will return a 500 status code if there is an internal server error.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/login/initiate/
+Content-Type: application/json
+
+{
+    "username": "kaboremessi@gmail.com",
+    "password": "new_password_123"
+}
+
+# Complete the login process by using the verification code.
+# The API will return a 200 status code if the login is successful.
+# The API will return a 400 status code if the login fails.
+# The API will return a 404 status code if the user is not found.
+# The API will return a 500 status code if there is an internal server error.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/login/complete/
+Content-Type: application/json
+
+{
+  "username": "kaboremessi@gmail.com",
+  "code": "390681"
+}
+
+# Register a new user.
+# The API will return a 201 status code if the registration is successful.
+# The API will return a 400 status code if the registration fails.
+# The API will return a 404 status code if the user already exists.
+# The API will return a 500 status code if there is an internal server error.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/register/
+Content-Type: application/json
+
+{
+    "email": "kaboremessi@gmail.com",
+    "first_name": "Kabore",
+    "last_name": "Messi",
+    "phone": "1234567890",
+    "gender": "H",
+    "password": "new_password_123",
+    "password2": "new_password_123"
+}
+
+# Verify the email address of a user.
+# The API will return a 200 status code if the verification is successful.
+# The API will return a 400 status code if the verification fails.
+# The API will return a 404 status code if the user is not found.

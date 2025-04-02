@@ -1,0 +1,54 @@
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/login/initiate/
+Content-Type: application/json
+
+{
+    "username": "kaboremessi@gmail.com",
+    "password": "new_password_123"
+}
+
+# POST http://127.0.0.1:8000/MistralVoyage/Authentication/login/complete/
+# Content-Type: application/json
+
+# {
+#   "username": "kaboremessi@gmail.com",
+#   "code": "390681"
+# }
+
+
+# POST http://127.0.0.1:8000/MistralVoyage/Authentication/register/
+# Content-Type: application/json
+
+# {
+#     "email": "kaboremessi@gmail.com",
+#     "first_name": "Kabore",
+#     "last_name": "Messi",
+#     "phone": "1234567890",
+#     "gender": "H",
+#     "password": "new_password_123",
+#     "password2": "new_password_123"
+# }
+
+# POST http://127.0.0.1:8000/MistralVoyage/Authentication/verify-email/
+# Content-Type: application/json
+
+# {
+#     "email": "kaboremessi@gmail.com",
+#     "code": "453200"
+# }
+
+# POST http://127.0.0.1:8000/MistralVoyage/Authentication/password/reset/request/
+# Content-Type: application/json
+
+# {
+#     "email": "kaboremessi@gmail.com"
+# }
+
+# POST http://127.0.0.1:8000/MistralVoyage/Authentication/password/reset/complete/
+# Content-Type: application/json
+
+# {
+#     "email": "kaboremessi@gmail.com",
+#     "code": "453200",
+#     "password": "re_new_password_123",
+#     "password2": "re_new_password_123"
+# }

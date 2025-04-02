@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue sur MISTRAL VOYAGE</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #0077b6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-left: 1px solid #e9ecef;
+            border-right: 1px solid #e9ecef;
+        }
+        .code-container {
+            background-color: #ffffff;
+            border: 2px dashed #0077b6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0077b6;
+            letter-spacing: 5px;
+        }
+        .footer {
+            background-color: #e9ecef;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #6c757d;
+            border-radius: 0 0 5px 5px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0077b6;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Bienvenue chez MISTRAL VOYAGE</h1>
+        </div>
+        <div class="content">
+            <h2>Bonjour {{ username }},</h2>
+            <p>Merci d'avoir créé un compte sur notre plateforme. Nous sommes ravis de vous compter parmi nos voyageurs!</p>
+            
+            <p>Pour finaliser votre inscription, veuillez utiliser le code de vérification ci-dessous:</p>
+            
+            <div class="code-container">
+                <div class="code">{{ code }}</div>
+            </div>
+            
+            <p>Ce code est valable pendant 10 minutes. Si vous n'avez pas demandé à créer un compte, veuillez ignorer cet email.</p>
+            
+            <p>Votre nom d'utilisateur est: <strong>{{ username }}</strong></p>
+            
+            <p>À très bientôt pour vos prochaines aventures!</p>
+            
+            <a href="{{ company_website }}" class="btn">Visiter notre site</a>
+        </div>
+        <div class="footer">
+            <p>© 2025 {{ company_name }} - Tous droits réservés</p>
+            <p>{{ company_address }}</p>
+            <p>Si vous avez des questions, contactez-nous à <a href="mailto:{{ company_email }}">{{ company_email }}</a></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+# Initier un processus de connexion en envoyant un code de vérification à l'adresse e-mail de l'utilisateur.
+# L'API renverra un code de statut 200 si l'initiation de la connexion est réussie.
+# L'API renverra un code de statut 400 si le nom d'utilisateur ou le mot de passe est invalide.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/login/initiate/
+Content-Type: application/json
+
+{
+    "username": "kaboremessi@gmail.com",
+    "password": "new_password_123"
+}
+
+# Compléter le processus de connexion en utilisant le code de vérification.
+# L'API renverra un code de statut 200 si la connexion est réussie.
+# L'API renverra un code de statut 400 si la connexion échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/login/complete/
+Content-Type: application/json
+
+{
+  "username": "kaboremessi@gmail.com",
+  "code": "390681"
+}
+
+POST 
+
+# Enregistrer un nouvel utilisateur.
+# L'API renverra un code de statut 201 si l'enregistrement est réussi.
+# L'API renverra un code de statut 400 si l'enregistrement échoue.
+# L'API renverra un code de statut 404 si l'utilisateur existe déjà.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/register/
+Content-Type: application/json
+
+{
+    "email": "kaboremessi@gmail.com",
+    "first_name": "Kabore",
+    "last_name": "Messi",
+    "phone": "1234567890",
+    "gender": "H",
+    "password": "new_password_123",
+    "password2": "new_password_123"
+}
+
+# Vérifier l'adresse e-mail d'un utilisateur.
+# L'API renverra un code de statut 200 si la vérification est réussie.
+# L'API renverra un code de statut 400 si la vérification échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/verify-email/
+Content-Type: application/json
+
+{
+    "email": "kaboremessi@gmail.com",
+    "code": "453200"
+}
+
+# Demander une réinitialisation de mot de passe pour un utilisateur.
+# L'API renverra un code de statut 200 si la demande est réussie.
+# L'API renverra un code de statut 400 si la demande échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/password/reset/request/
+Content-Type: application/json
+
+{
+    "email": "kaboremessi@gmail.com"
+}
+
+# Compléter le processus de réinitialisation du mot de passe pour un utilisateur.
+# L'API renverra un code de statut 200 si la réinitialisation du mot de passe est réussie.
+# L'API renverra un code de statut 400 si la réinitialisation échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/password/reset/complete/
+Content-Type: application/json
+
+{
+    "email": "kaboremessi@gmail.com",
+    "code": "453200",
+    "password": "re_new_password_123",
+    "password2": "re_new_password_123"
+}
+
+# Déconnexion d'un utilisateur.
+# L'API renverra un code de statut 200 si la déconnexion est réussie.
+# L'API renverra un code de statut 400 si la déconnexion échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/logout/
+Content-Type: application/json
+
+{
+    "access_token": "<token>",  #dans le corps de la requête c'est le refresh token qui est envoyé
+    "refresh_token": "<token>"  #dans le corps de la requête, assurez-vous d'envoyer le refresh token comme vous le faites déjà
+}
+
+
+Dans le champ de token, collez votre access token (pas le refresh token)
+Ensuite, dans le corps de la requête, assurez-vous d'envoyer le refresh token comme vous le faites déjà

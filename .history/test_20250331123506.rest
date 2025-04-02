@@ -1,0 +1,24 @@
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/login/initiate/
+Content-Type: application/json
+
+{
+    "username": "kaboremessi@gmail.com",
+    "password": "admin"
+}
+
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/login/complete/
+Content-Type: application/json
+
+{
+  "username": "kaboremessi@gmail.com",
+  "code": "390681"
+}
+
+
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/verify-email/
+Content-Type: application/json
+
+{
+    "email": "kaboremessi@gmail.com",
+    "code": "453200"
+}
