@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de Réservation - MISTRAL VOYAGE</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #0c3b87; /* Bleu Mistral */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .logo {
+            max-width: 250px;
+            margin-bottom: 15px;
+        }
+        .content {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-left: 1px solid #e9ecef;
+            border-right: 1px solid #e9ecef;
+        }
+        .booking-details {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .booking-reference {
+            background-color: #ffffff;
+            border: 2px dashed #22b14c; /* Vert Mistral */
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .reference-code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0c3b87; /* Bleu Mistral */
+            letter-spacing: 2px;
+        }
+        .footer {
+            background-color: #e9ecef;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #6c757d;
+            border-radius: 0 0 5px 5px;
+        }
+        .important-notice {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #22b14c; /* Vert Mistral */
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        h1 {
+            color: white;
+        }
+        h2 {
+            color: #0c3b87; /* Bleu Mistral */
+        }
+        .content h2 {
+            border-bottom: 2px solid #22b14c; /* Vert Mistral */
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #e9ecef;
+        }
+        .flight-info {
+            background-color: #e6f3ff;
+            border-left: 4px solid #0c3b87;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .passenger-info {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 4px;
+        }
+        .office-info {
+            background-color: #ffeeba;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- Logo de Mistral VOYAGES -->
+            <img src="data:image/png;base64,{{ logo_data }}" alt="Mistral VOYAGES" class="logo">
+            <h1>Confirmation de Réservation</h1>
+        </div>
+        <div class="content">
+            <h2>Bonjour {{ user.first_name|default:user.username }},</h2>
+            <p>Nous vous remercions pour votre réservation chez MISTRAL VOYAGE. Votre vol a été confirmé avec succès!</p>
+            
+            <div class="booking-reference">
+                <p>Référence de réservation:</p>
+                <div class="reference-code">{{ booking_reference }}</div>
+            </div>
+            
+            <div class="flight-info">
+                <h3>Détails du Vol</h3>
+                <p><strong>Vol:</strong> {{ flight_offer.flight_number }} - {{ flight_offer.airline }}</p>
+                <p><strong>Trajet:</strong> {{ origin }} → {{ destination }}</p>
+                <p><strong>Date de départ:</strong> {{ departure_date }}</p>
+                <p><strong>Date d'arrivée:</strong> {{ arrival_date }}</p>
+                <p><strong>Classe:</strong> {{ flight_offer.travel_class }}</p>
+                
+                {% if is_round_trip %}
+                <h3>Vol Retour</h3>
+                <p><strong>Date de départ:</strong> {{ return_departure_date }}</p>
+                <p><strong>Date d'arrivée:</strong> {{ return_arrival_date }}</p>
+                {% endif %}
+            </div>
+            
+            <div class="booking-details">
+                <h3>Détails de la Réservation</h3>
+                <p><strong>Prix total:</strong> {{ total_price }} {{ currency }}</p>
+                <p><strong>Mode de paiement:</strong> {{ payment_method }}</p>
+                
+                {% if payment_method == 'OFFICE' and office_appointment_date %}
+                <div class="office-info">
+                    <h4>Rendez-vous en Agence</h4>
+                    <p>Vous avez choisi de finaliser votre paiement en agence. Votre rendez-vous est prévu pour le:</p>
+                    <p><strong>{{ office_appointment_date }}</strong></p>
+                    <p>N'oubliez pas d'apporter votre pièce d'identité et cette confirmation de réservation.</p>
+                </div>
+                {% endif %}
+            </div>
+            
+            <h3>Passagers</h3>
+            {% for passenger in passengers %}
+            <div class="passenger-info">
+                <p><strong>{{ passenger.first_name }} {{ passenger.last_name }}</strong></p>
+                <p>Type: {{ passenger.passenger_type }}</p>
+                {% if passenger.passport_number %}
+                <p>Passeport: {{ passenger.passport_number }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            
+            <p>Nous vous conseillons de vous présenter à l'aéroport au moins 3 heures avant l'heure de départ pour les vols internationaux et 2 heures pour les vols domestiques.</p>
+            
+            <div class="important-notice">
+                <p><strong>Important:</strong> Veuillez vérifier que toutes les informations ci-dessus sont correctes. En cas d'erreur, contactez-nous immédiatement.</p>
+            </div>
+            
+            <p>Merci d'avoir choisi MISTRAL VOYAGE pour votre voyage. Nous vous souhaitons un excellent vol!</p>
+            
+            <a href="{{ company_website }}" class="btn">Gérer ma réservation</a>
+        </div>
+        <div class="footer">
+            <p>© 2025 MISTRAL VOYAGE - Tous droits réservés</p>
+            <p>{{ company_address }}</p>
+            <p>Si vous avez des questions, contactez-nous à <a href="mailto:{{ company_email }}">{{ company_email }}</a></p>
+        </div>
+    </div>
+</body>
+</html>

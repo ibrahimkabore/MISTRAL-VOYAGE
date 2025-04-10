@@ -1,0 +1,308 @@
+# Initier un processus de connexion en envoyant un code de vérification à l'adresse e-mail de l'utilisateur.
+# L'API renverra un code de statut 200 si l'initiation de la connexion est réussie.
+# L'API renverra un code de statut 400 si le nom d'utilisateur ou le mot de passe est invalide.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/login/initiate/
+Content-Type: application/json
+
+{
+    "username": "kaboremessi@gmail.com",
+    "password": "new_password_123"
+}
+
+# Compléter le processus de connexion en utilisant le code de vérification.
+# L'API renverra un code de statut 200 si la connexion est réussie.
+# L'API renverra un code de statut 400 si la connexion échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/login/complete/
+Content-Type: application/json
+
+{
+  "username": "kaboremessi@gmail.com",
+  "code": "390681"
+}
+
+POST  
+
+# Enregistrer un nouvel utilisateur.
+# L'API renverra un code de statut 201 si l'enregistrement est réussi.
+# L'API renverra un code de statut 400 si l'enregistrement échoue.
+# L'API renverra un code de statut 404 si l'utilisateur existe déjà.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/register/
+Content-Type: application/json
+
+{
+    "email": "kaboremessi@gmail.com",
+    "first_name": "Kabore",
+    "last_name": "Messi",
+    "phone": "1234567890",
+    "gender": "H",
+    "password": "new_password_123",
+    "password2": "new_password_123"
+}
+
+# Vérifier l'adresse e-mail d'un utilisateur.
+# L'API renverra un code de statut 200 si la vérification est réussie.
+# L'API renverra un code de statut 400 si la vérification échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/verify-email/
+Content-Type: application/json
+
+{
+    "email": "kaboremessi@gmail.com",
+    "code": "453200"
+}
+
+# Demander une réinitialisation de mot de passe pour un utilisateur.
+# L'API renverra un code de statut 200 si la demande est réussie.
+# L'API renverra un code de statut 400 si la demande échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/password/reset/request/
+Content-Type: application/json
+
+{
+    "email": "kaboremessi@gmail.com"
+}
+
+# Compléter le processus de réinitialisation du mot de passe pour un utilisateur.
+# L'API renverra un code de statut 200 si la réinitialisation du mot de passe est réussie.
+# L'API renverra un code de statut 400 si la réinitialisation échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/password/reset/complete/
+Content-Type: application/json
+
+{
+    "email": "kaboremessi@gmail.com",
+    "code": "453200",
+    "password": "re_new_password_123",
+    "password2": "re_new_password_123"
+}
+
+# Déconnexion d'un utilisateur.
+# L'API renverra un code de statut 200 si la déconnexion est réussie.
+# L'API renverra un code de statut 400 si la déconnexion échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+POST http://127.0.0.1:8000/MistralVoyage/Authentication/logout/
+Content-Type: application/json
+
+{
+    "access_token": "<token>",  #dans l'en-tête de la requête c'est le refresh token qui est envoyé
+    "refresh_token": "<token>"  #dans le corps de la requête, assurez-vous d'envoyer le refresh token dans le corps de la requête
+
+    { 
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MzYzNTAzOSwiaWF0IjoxNzQzNTQ4NjM5LCJqdGkiOiJhNGIwMzBmOGRmYmU0OGFlODI5MGJhZDU1MmE3MzIxYyIsInVzZXJfaWQiOiIyZTg2OTZiNC01MzBiLTRiM2ItODNjMi04YTc1MjQ1NmYwN2IifQ.EVVClb8PsFP4jhCGpBvLWOwEuOL1oSwcWnt8CmxImT0"
+    }
+}
+
+
+# Récupérer les informations du profil de l'utilisateur.
+# L'API renverra un code de statut 200 si la récupération est réussie.
+# L'API renverra un code de statut 400 si la récupération échoue.
+# L'API renverra un code de statut 404 si l'utilisateur n'est pas trouvé.
+# L'API renverra un code de statut 500 s'il y a une erreur interne du serveur.
+GET http://127.0.0.1:8000/MistralVoyage/Authentication/profile/
+
+Content-Type: application/json
+
+{
+    "access_token": "<token>",  #dans l'en-tête de la requête c'est le refresh token qui est envoyé
+    "refresh_token": "<token>"  #dans le corps de la requête, assurez-vous d'envoyer le refresh token dans le corps de la requête
+
+    { 
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MzYzNTAzOSwiaWF0IjoxNzQzNTQ4NjM5LCJqdGkiOiJhNGIwMzBmOGRmYmU0OGFlODI5MGJhZDU1MmE3MzIxYyIsInVzZXJfaWQiOiIyZTg2OTZiNC01MzBiLTRiM2ItODNjMi04YTc1MjQ1NmYwN2IifQ.EVVClb8PsFP4jhCGpBvLWOwEuOL1oSwcWnt8CmxImT0"
+    }
+}
+
+
+######"flights"####
+
+POST http://127.0.0.1:8000/MistralVoyage/Flights/flights/search/
+
+Content-Type: application/json
+
+{
+    "access_token": "<token>",  #dans l'en-tête de la requête c'est le refresh token qui est envoyé
+    "refresh_token": "<token>"  #dans le corps de la requête, assurez-vous d'envoyer le refresh token dans le corps de la requête
+
+    { 
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MzYzNTAzOSwiaWF0IjoxNzQzNTQ4NjM5LCJqdGkiOiJhNGIwMzBmOGRmYmU0OGFlODI5MGJhZDU1MmE3MzIxYyIsInVzZXJfaWQiOiIyZTg2OTZiNC01MzBiLTRiM2ItODNjMi04YTc1MjQ1NmYwN2IifQ.EVVClb8PsFP4jhCGpBvLWOwEuOL1oSwcWnt8CmxImT0"
+    }
+}
+
+#Pour un vol aller simple (sans date de retour) :
+{
+  "origin": "CDG",
+  "destination": "JFK",
+  "departure_date": "2025-05-15",
+  "adults": 1,
+  "travel_class": "BUSINESS",
+  "currency_code": "XOF"
+}
+
+#Pour un voyage en famille :
+{
+  "origin": "ORY",
+  "destination": "BCN",
+  "departure_date": "2025-07-10",
+  "return_date": "2025-07-17",
+  "adults": 2,
+  "children": 2,
+  "infants": 1,
+  "travel_class": "ECONOMY"
+}
+
+#Pour un voyage d'affaires :
+{
+  "origin": "LHR",
+  "destination": "SIN",
+  "departure_date": "2025-06-05",
+  "return_date": "2025-06-12",
+  "adults": 1,
+  "travel_class": "BUSINESS"
+}
+
+POST http://127.0.0.1:8000/MistralVoyage/Flights/flights/multi-city-search/
+
+{
+  "segments": [
+    {
+      "origin": "CDG",
+      "destination": "JFK",
+      "departure_date": "2025-06-15"
+    },
+    {
+      "origin": "JFK",
+      "destination": "LAX",
+      "departure_date": "2025-06-22"
+    },
+    {
+      "origin": "LAX",
+      "destination": "CDG",
+      "departure_date": "2025-06-29"
+    }
+  ],
+  "adults": 2,
+  "children": 1,
+  "infants": 0,
+  "travel_class": "ECONOMY",
+  "currency_code": "EUR"
+}
+
+
+POST http://127.0.0.1:8000/MistralVoyage/Flights/bookings/create/
+
+Content-Type: application/json
+{
+     
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NDE0MDU0NiwiaWF0IjoxNzQ0MDU0MTQ2LCJqdGkiOiI3Mzc1YTE5MTM2NjI0ZTdjYmExNmMyMTM3MDFmODVkZSIsInVzZXJfaWQiOiJjMmY0YjE0NC1kZjVhLTQ1NzItYjZjNi1iNzI3NWVmNGU5ZGIifQ.Ofu1Vpi4YjdstOGbevKM9_7K0MnhYOD2SE90989B8GM",
+    
+  "flight_data": {
+    "origin": {
+      "code": "ABJ",
+      "name": "Aéroport ABJ",
+      "city": "Abidjan",
+      "country": "cote d'ivoire"
+    },
+    "destination": {
+        "code": "CDG",
+        "name": "CHARLES DE GAULLE",
+        "city": "PARIS",
+        "country": "FRANCE"
+    },
+    "departure_date": "2025-05-15T08:00:00Z",
+    "arrival_date": "2025-05-15T10:30:00Z",
+    "price":175100.00,
+    "currency": "XOF",
+    "flight_number": "AF123",
+    "airline": "Air France",
+    "travel_class": "ECONOMY",
+    "itineraries": [
+                {
+                    "duration": "PT12H40M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "ABJ",
+                                "at": "2025-04-18T16:45:00"
+                            },
+                            "arrival": {
+                                "iataCode": "DSS",
+                                "at": "2025-04-18T19:30:00"
+                            },
+                            "carrierCode": "HC",
+                            "number": "306",
+                            "aircraft": {
+                                "code": "319"
+                            },
+                            "operating": {
+                                "carrierCode": "HC"
+                            },
+                            "duration": "PT2H45M",
+                            "id": "72",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "DSS",
+                                "at": "2025-04-19T00:45:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CDG",
+                                "terminal": "2C",
+                                "at": "2025-04-19T07:25:00"
+                            },
+                            "carrierCode": "HC",
+                            "number": "403",
+                            "aircraft": {
+                                "code": "330"
+                            },
+                            "operating": {
+                                "carrierCode": "HC"
+                            },
+                            "duration": "PT4H40M",
+                            "id": "73",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ]
+    
+  },
+  "passengers": [
+    {
+      "first_name": "kabore",
+      "last_name": "ibrahim",
+      "date_of_birth": "2001-11-16",
+      "gender": "M",
+      "passport_number": "12AB34567",
+      "passenger_type": "ADULT"
+    }
+  ],
+  "contact_email": "ibrahimkabore025@gmail.com",
+  "contact_phone": "+225 01002331740",
+  "payment_method": "WAVE"
+}
+
+
+
+GET http://127.0.0.1:8000/MistralVoyage/Flights/bookings/UJ438J8X/
+
+Content-Type: application/json
+
+{
+    "access_token": "<token>",  #dans l'en-tête de la requête c'est le refresh token qui est envoyé
+    "refresh_token": "<token>"  #dans le corps de la requête, assurez-vous d'envoyer le refresh token dans le corps de la requête
+
+    { 
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NDEyNDAzNSwiaWF0IjoxNzQ0MDM3NjM1LCJqdGkiOiIzNTNmYTkyMDE0Yjg0ZmEwODYyMDFkMTg2NmFlNDFhMCIsInVzZXJfaWQiOiIyZTg2OTZiNC01MzBiLTRiM2ItODNjMi04YTc1MjQ1NmYwN2IifQ.9Yc06uZLrTE1YGntkYd41VycT8uSifFO0gCYKcnkdh8"
+    }
+}

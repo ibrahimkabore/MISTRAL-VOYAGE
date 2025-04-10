@@ -1,0 +1,142 @@
+{
+
+    "origin": {
+        "code": "ABJ",
+        "name": "Aéroport ABJ"
+    },
+    "destination": {
+        "code": "CDG",
+        "name": "CHARLES DE GAULLE",
+        "city": "PARIS",
+        "country": "FRANCE"
+    },
+    "flight_offers": [
+        {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "isUpsellOffer": false,
+            "lastTicketingDate": "2025-04-18",
+            "lastTicketingDateTime": "2025-04-18",
+            "numberOfBookableSeats": 6,
+            "itineraries": [
+                {
+                    "duration": "PT12H40M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "ABJ",
+                                "at": "2025-04-18T16:45:00"
+                            },
+                            "arrival": {
+                                "iataCode": "DSS",
+                                "at": "2025-04-18T19:30:00"
+                            },
+                            "carrierCode": "HC",
+                            "number": "306",
+                            "aircraft": {
+                                "code": "319"
+                            },
+                            "operating": {
+                                "carrierCode": "HC"
+                            },
+                            "duration": "PT2H45M",
+                            "id": "72",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "DSS",
+                                "at": "2025-04-19T00:45:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CDG",
+                                "terminal": "2C",
+                                "at": "2025-04-19T07:25:00"
+                            },
+                            "carrierCode": "HC",
+                            "number": "403",
+                            "aircraft": {
+                                "code": "330"
+                            },
+                            "operating": {
+                                "carrierCode": "HC"
+                            },
+                            "duration": "PT4H40M",
+                            "id": "73",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "XOF",
+                "total": "175100.00",
+                "base": "22600.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "175100.00"
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": true
+            },
+            "validatingAirlineCodes": [
+                "HC"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "XOF",
+                        "total": "175100.00",
+                        "base": "22600.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "72",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "XXOWCI1",
+                            "class": "X",
+                            "includedCheckedBags": {
+                                "quantity": 3
+                            },
+                            "includedCabinBags": {
+                                "quantity": 1
+                            }
+                        },
+                        {
+                            "segmentId": "73",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "XXOWCI1",
+                            "class": "X",
+                            "includedCheckedBags": {
+                                "quantity": 3
+                            },
+                            "includedCabinBags": {
+                                "quantity": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

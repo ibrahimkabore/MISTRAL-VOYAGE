@@ -1,0 +1,17 @@
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NDI4ODc3MiwiaWF0IjoxNzQ0MjAyMzcyLCJqdGkiOiI4NGYyMDQ5ODFkNGU0NjM3YWJiMjkwNWE0OTk5OGYyZiIsInVzZXJfaWQiOiI0MWU5YzQxOS05OTJkLTQ3NTUtYTUzMi1iNWQzZTQ0ZDgzNWMifQ._XXoOATPtp5s06Yul8lQSzCPKCO-9tGsMI1LTj3ASe0",
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0MjA1OTcyLCJpYXQiOjE3NDQyMDIzNzIsImp0aSI6IjE3NjUzN2Y0ZjNlMDQyMjU5YTRmZGYxZTYwNGVlMmZiIiwidXNlcl9pZCI6IjQxZTljNDE5LTk5MmQtNDc1NS1hNTMyLWI1ZDNlNDRkODM1YyJ9.rlS-A8hjl2s0b4rJVapoOWUusptFD9u1qsbweBUcmNY",
+    "user": {
+        "id": "41e9c419-992d-4755-a532-b5d3e44d835c",
+        "username": "Kabore20",
+        "email": "kaboremessi@gmail.com",
+        "first_name": "Kabore",
+        "last_name": "Messi",
+        "phone": "1234567890",
+        "gender": "H",
+        "photos": null,
+        "currency": "",
+        "pays": "",
+        "ville": ""
+    }
+}
